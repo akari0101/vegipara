@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* サイト名：　Vegipara
+* サイト概要：　
+* サイトテーマ：　無農薬のお野菜を作っている農家さんから直接購入できるEC×コミュニティサイト
+* テーマを選んだ理由：　家では無農薬のお野菜を使う様にしていますが、近場で見つけることはとても難しく、あったとしても探している特定のお野菜を見つけるのが難しいため、お店を何軒も行ったりしないといけません。田舎   だとお家で栽培している方も多く、一度野菜が出来てしまうと、家族や知り合いにお裾分けしても残ったりするので、フードロスにも貢献するためにも気軽にお家で栽培している方なども出品でき、無農薬のお野菜を購入した   い人とを繋げることの出来るECコミュニティ場所があれば嬉しいなと思い、このテーマにしました。　恋愛のマッチングアプリはありますが、恋愛の出会いだけではなく、昔ながらの人の優しさ、温もりなどを感じられる、また違っ   た新たな出会いの場になればと思っております。
+* ターゲットユーザー：　無農薬のお野菜を探しているお客様と、無農薬のお野菜を作っている農家さん
+* 主な利用シーン：　	自身で栽培した無農薬野菜を出品したり、無農薬野菜を購入したりできる
