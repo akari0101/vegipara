@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_active: false
+  name: MyString
+  introduction: MyText
+  price: 1
+  customer: one
+  genre: one
+
+two:
+  is_active: false
+  name: MyString
+  introduction: MyText
+  price: 1
+  customer: two
+  genre: two

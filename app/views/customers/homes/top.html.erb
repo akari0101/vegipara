@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'customers/genres/index', genres: @genres %>
+    </div>
+    <div class='col-md-9 offset-1'>
+      <table>
+        <tr>
+          <td>
+            <%= image_tag'top.jpg', size:"750x410" ,style:"position: relative;" %>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <div class = "new-arrival">
+          <h3><strong>新着商品</strong></h3>
+            <div class = "new-arrival-contents" style="display:flex; flex-wrap:wrap;">
+              <%= render 'customers/items/index', items: @items %>
+            </div>
+        </div>
+        <div class = "row justify-content-end">
+          <%= link_to "全ての商品を見る＞",items_path %>
+        </div>
+      </table>
+    </div>
+  </div>
+</div>
