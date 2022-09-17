@@ -1,0 +1,20 @@
+<div class="container">
+  <h4>配送先編集</h4>
+    <%= form_with model:@address do |f| %>
+      <table>
+        <tr>
+          <th>郵便番号</th>
+            <td><%= f.text_field :postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= f.text_field :address, style: "width: 200%;" %></td>
+        </tr>
+        <tr>
+          <th>宛名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+      </table>
+  　     <%= f.submit "変更内容を保存", class:"btn btn-primary btn-md" %>
+    <% end %>
+  </div>

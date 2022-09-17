@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="col-sm-3">
+      <%= render 'customers/genres/index', genres: @genres %>
+    </div>
+    <div class="col-sm-4">
+      <%= image_tag @item.image, size: '300x300' %>
+    </div>
+    <div class="col-sm-4 offset-1">
+      <h3><%=@item.name%></h3>
+      <p class="my-3"><%=@item.introduction%></p>
+      <strong><p class="mt-5">￥<%= @item.with_tax_price %>(税込)</p></strong>
+      <%=form_with model: @cart_item, url: cart_items_path,method: :post do |f| %>
+        <%= f.hidden_field :item_id,:value => @item.id %>
+        <%= f.hidden_field :customer, :value => current_customer %>
+        <%= f.select :quantity, *[1..10], prompt:"個数選択" %>
+        <%=f.submit"カートに入れる", class: "btn btn-success ml-5"%>
+      <%end%>
+    </div>
+  </div>
+</div>
