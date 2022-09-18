@@ -1,4 +1,4 @@
-class Customers::AdressesController < ApplicationController
+class Customers::AddressesController < ApplicationController
   #配送先一覧
   def index
     @customer = current_customer
