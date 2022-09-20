@@ -5,7 +5,7 @@
       <h3>出品商品新規登録</h3>
     </div>
   </div>
- <%= form_with model: @item, url: new_product_path do |f|%>
+ <%= form_with model: @product, url: products_path do |f|%>
    <div class="row">
     <div class="col-sm-9 offset-3">
        <table class="table-borderless-item">
@@ -41,7 +41,7 @@
          <tr>
           <div class="col-sm-2 d-flex flex-row">
             <td><%= f.label :税抜価格 %></td>
-            <td><%= f.text_field :price, class:"form-control", placeholder: "1000" %></td>
+            <td><%= f.text_field :price, class:"form-control", placeholder: "1000" %>円</td>
           </div>
          </tr>
          <tr>

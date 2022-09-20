@@ -17,5 +17,14 @@
         <%=f.submit"カートに入れる", class: "btn btn-success ml-5"%>
       <%end%>
     </div>
+    
+    <!--コメントフォーム-->
+    <div class="new-comment">
+      <%= render 'customers/comments/form', item: @item, comment: @comment %>
+    </div>
+    <!--コメント一覧部分-->
+    <div class="comments_area">
+      <%= render 'customers/comments/post_comments', item: @item %>
+    </div>
   </div>
 </div>

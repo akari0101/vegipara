@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post '/orders/confirm' => 'customers/orders#confirm'
   get '/orders/complete' => 'customers/orders#complete'
 
+  get 'items/search/:id' => 'items#search'
   delete '/cart_items/destroy_all' => 'customers/cart_items#destroy_all'
 
   get '/customers' => 'customers/customers#show'
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
+    resources :comments, only: [:create, :destroy]
   end
 
 end

@@ -8,6 +8,8 @@ class Customers::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
     @genres = Genre.all
+    @comment = Comment.new　#追加
+    #@comments = @output.comments.includes(:user)
   end
 
   def search
@@ -17,4 +19,9 @@ class Customers::ItemsController < ApplicationController
     @genre_items = @genre.items.page(params[:page]).per(8)
   end
 
+  private
+  
+  def user_params
+      params.require(:item).permit(:image)
+  end
 end

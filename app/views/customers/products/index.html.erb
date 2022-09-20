@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @items.each do |item| %>
+      <% @products.each do |item| %>
       <tr>
         <td><%= item.id %></td>
         <td>
@@ -28,9 +28,9 @@
           <%=item.name%>
           <%end%>
           </td>
-        <td><%=item.price%></td>
-        <td><%=item.genre.name%></td>
-        <td><% if item.is_active == false %>
+        <td><%=product.price%></td>
+        <td><%=product.genre.name%></td>
+        <td><% if product.is_active == false %>
               <p class="color text-success", style="margin:0">販売中</p>
             <% else %>
               <p class="color text-secondary", style="margin:0">販売停止中</p>
