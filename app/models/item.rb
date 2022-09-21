@@ -6,6 +6,10 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :image
   
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :star_count, -> {order(star: :desc)}
+
   # 消費税を求めるメソッド
   def with_tax_price
     (price * 1.1).floor

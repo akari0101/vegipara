@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.integer :price, null: false
       t.references :customer, null: false, foreign_key: true
       t.references :genre, null: false, foreign_key: true
+      t.string :star
 
       t.timestamps
     end

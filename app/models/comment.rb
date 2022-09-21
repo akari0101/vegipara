@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  validates :body, presence: true
+  validates :comment, presence: true
   
   belongs_to :customer
   belongs_to :item

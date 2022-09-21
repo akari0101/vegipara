@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row text-right mt-4">
+    <div class="col-sm-4">
+
+      <h3>出品商品新規登録</h3>
+    </div>
+  </div>
+ <%= form_with model: @item, url: items_path do |f|%>
+   <div class="row">
+    <div class="col-sm-9 offset-3">
+       <table class="table-borderless-item">
+         <tr>
+          <div>
+            <p class="my-3">
+             <td><%= f.label :商品画像 %></td>
+             <td><%=f.file_field :image, accept: "image/*" %></td>
+            </p>
+          </div>
+         </tr>
+         <tr>
+          <div class="col-sm-2">
+            <p class="my-3">
+             <td><%= f.label :商品名 %></td>
+             <td><%= f.text_field :name, class:"form-control", placeholder: "商品名" %></td>
+            </p>
+          </div>
+         </tr>
+         <tr>
+          <div class="col-sm-2">
+            <p class="my-3">
+            <td><%= f.label :商品説明 %></td>
+            <td><%= f.text_area :introduction, class:"form-control", placeholder: "ここに説明文を記述してください" %></td>
+          </div>
+         </tr>
+         <tr>
+          <div>
+            <td><%= f.label :ジャンル %></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+          </div>
+         </tr>
+         <tr>
+          <div class="col-sm-2
+          d-flex flex-row">
+            <td><%= f.label :税抜価格 %></td>
+            <td><%= f.text_field :price, class:"form-control", placeholder: "1000" %>円</td>
+          </div>
+         </tr>
+         <tr>
+          <div>
+            <td><%= f.label :販売ステータス %></td>
+            <td><%= f.select :is_active, [["販売中","false"], ["販売不可","true"]], include_blank: "--選択してください--" %></td>
+          </div>
+         </tr>
+        </p>
+       </table>
+    </div>
+   </div>
+     <div class="row text-center mb-3">
+      <div class="col-sm-12">
+        <td><%= f.submit "新規登録" ,class: 'btn btn-success col-sm-2' %></td>
+      </div>
+    </div>
+
+ <% end %>
+</div>

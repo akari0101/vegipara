@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   }
 
   root to: "customers/homes#top"
-  
+
   post '/orders/confirm' => 'customers/orders#confirm'
   get '/orders/complete' => 'customers/orders#complete'
 
@@ -40,10 +40,11 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     resources :cart_items, only: [:update, :create, :index, :destroy]
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show, :new, :create] do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
-    resources :comments, only: [:create, :destroy]
   end
 
 end

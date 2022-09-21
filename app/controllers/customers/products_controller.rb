@@ -1,11 +1,11 @@
 class Customers::ProductsController < ApplicationController
 
 def index
-  @products = Product.all
+  @items = current_customer.items
 end
 
 def new
-  @product = Product.new
+  @item = Item.new
 end
 
 def create
