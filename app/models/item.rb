@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one_attached :image
   
   scope :latest, -> {order(created_at: :desc)}
@@ -22,5 +23,9 @@ class Item < ApplicationRecord
   #消費税を加えた商品価格
   def add_tax_price
     (self.price * 1.10).round
+  end
+  
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
   end
 end

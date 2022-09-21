@@ -17,7 +17,7 @@
         <%=f.submit"カートに入れる", class: "btn btn-success ml-5"%>
       <%end%>
     </div>
-    
+
     <!--星レビュー機能-->
     <td>
       <div id="star-rate<%= @item.id%>"></div>
@@ -32,7 +32,21 @@
             score: <%= @item.star %>,
           });
         </script>
-    </td>    
+    </td>
+    <!--イイネ機能-->
+    <% if @item.favorited_by?(current_customer) %>
+      <p>
+        <%= link_to item_favorites_path(@item), method: :delete do %>
+          ♥<%= @item.favorites.count %> いいね
+        <% end %>
+      </p>
+      <% else %>
+      <p>
+        <%= link_to item_favorites_path(@item), method: :post do %>
+          ♡<%= @item.favorites.count %> いいね
+        <% end %>
+      </p>
+    <% end %>
     <!--コメントフォーム-->
     <div class="new-comment">
       <%= render 'customers/comments/form', item: @item, comment: @comment %>
