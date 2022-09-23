@@ -2,6 +2,26 @@
   <div id="comments-error">
     <%= render 'layouts/error_messages', model: f.object %>
   </div>
+  <!--星レビュー機能-->
+  <div class="form-group row" id="star">
+    <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :star, id: :review_star %>
+  </div>
+
+    <td>
+      <div id="star-rate-new"></div>
+        <script>
+          $('#star-rate-new').empty();
+          $('#star-rate-new').raty({
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            half: false,
+            scoreName: 'comment[star]'
+          });
+        </script>
+    </td>
+
     <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する", class: 'btn btn-success' %>
 <% end %>

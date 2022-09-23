@@ -4,6 +4,17 @@
     <%= render 'customers/genres/index', genres: @genres %>
   </div>
 
+<div class="search_friend_by_categorize">
+  <div class="uk-text-secondary.uk-text-bold">
+    <p>タグで探す</p>
+  </div>
+  <div class="uk-flex.uk-flex-wrap">
+    <% @tag_lists.each do |list| %>
+      <%= link_to list.tag_name, items_path(tag_id: list.id), class: 'tag_list' %>
+    <% end %>
+  </div>
+</div>
+        
   <div class="col-sm-9">
     <h2>商品一覧(全<%= Item.count %>件)</h2>
     <p>

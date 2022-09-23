@@ -18,21 +18,7 @@
       <%end%>
     </div>
 
-    <!--星レビュー機能-->
-    <td>
-      <div id="star-rate<%= @item.id%>"></div>
-        <script>
-          $('#star-rate<%= @item.id %>').empty();
-          $('#star-rate<%= @item.id%>').raty({
-            size      : 36,
-            starOff   : '<%= asset_path('star-off.png') %>',
-            starOn    : '<%= asset_path('star-on.png') %>',
-            half      : false,
-            readOnly: true,
-            score: <%= @item.star %>,
-          });
-        </script>
-    </td>
+    
     <!--イイネ機能-->
     <% if @item.favorited_by?(current_customer) %>
       <p>

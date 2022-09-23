@@ -6,7 +6,7 @@ class Customers::CommentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @comment = current_customer.comments.new(comment_params)
     @comment.item_id = @item.id
-    #byebug
+    pp @comment
     if @comment.save
       flash.now[:notice] = 'コメントを投稿しました'
       redirect_to item_path(@item)
@@ -24,7 +24,7 @@ class Customers::CommentsController < ApplicationController
 
   def comment_params
     #どのitemにcommentしたかをmergeしてあげる
-    params.require(:comment).permit(:comment).merge(item_id: params[:item_id])
+    params.require(:comment).permit(:comment, :star).merge(item_id: params[:item_id])
   end
 
 end

@@ -1,17 +1,27 @@
 class Customers::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page]).per(8)
     @genres = Genre.all
+    #タグで絞り込み機能
+    if params[:search].present?
+      items = Item.items_serach(params[:search])
+    elsif params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      items = @tag.items.order(created_at: :desc)
+    else
+      items = Item.all
+    end
+    @tag_lists = Tag.all
+    @items = items.page(params[:page]).per(8)
     #投稿日を昇順で取り出し
     if params[:latest]
-      @items = Item.latest
+      @items = @items.latest
     elsif params[:old]
-      @items = Item.old
+      @items = @items.old
     elsif params[:star_count]
-      @items = Item.star_count
-    else
-      @items = Item.all
+      @items = @items.star_count
     end
+
+    pp "hoge",@items
   end
 
   def new
@@ -22,6 +32,8 @@ class Customers::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.customer_id = current_customer.id
     if @item.save
+      tag_list = params[:item][:tag_name].sub(/　/," ").split(nil)
+      @item.save_items(tag_list)
       redirect_to items_path
     else
       render action: :new

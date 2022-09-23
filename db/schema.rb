@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_21_150911) do
+ActiveRecord::Schema.define(version: 2022_09_22_115455) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2022_09_21_150911) do
     t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "star"
     t.index ["customer_id"], name: "index_comments_on_customer_id"
     t.index ["item_id"], name: "index_comments_on_item_id"
   end
@@ -122,7 +123,6 @@ ActiveRecord::Schema.define(version: 2022_09_21_150911) do
     t.integer "price", null: false
     t.integer "customer_id", null: false
     t.integer "genre_id", null: false
-    t.string "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_items_on_customer_id"
@@ -155,6 +155,22 @@ ActiveRecord::Schema.define(version: 2022_09_21_150911) do
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
+  create_table "tagmaps", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_tagmaps_on_item_id"
+    t.index ["tag_id"], name: "index_tagmaps_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_name"], name: "index_tags_on_tag_name", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "customers"
@@ -167,4 +183,6 @@ ActiveRecord::Schema.define(version: 2022_09_21_150911) do
   add_foreign_key "order_details", "items"
   add_foreign_key "order_details", "orders"
   add_foreign_key "orders", "customers"
+  add_foreign_key "tagmaps", "items"
+  add_foreign_key "tagmaps", "tags"
 end
