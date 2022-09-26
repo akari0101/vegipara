@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :tagmaps, dependent: :destroy
   has_many :tags, through: :tagmaps
+  has_many :bookmarks, dependent: :destroy
   has_one_attached :image
 
   scope :latest, -> {order(created_at: :desc)}
@@ -64,5 +65,10 @@ class Item < ApplicationRecord
       item_tag = Tag.find_or_create_by(tag_name:new_name)
       self.tags << item_tag
     end
+  end
+
+  #bookmarked_by?(customer)を追加で、既にブックマークしているかを検証
+  def bookmarked_by?(customer)
+    bookmarks.where(customer_id: customer).exists?
   end
 end

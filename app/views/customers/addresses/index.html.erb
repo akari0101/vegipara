@@ -4,22 +4,22 @@
       <table>
         <tr>
           <th>郵便番号</th>
-            <td><%= f.text_field :pos_code %></td>
+            <td><%= f.text_field :pos_code, class:"rounded-pill" %></td>
         </tr>
         <tr>
           <th>住所</th>
-          <td><%= f.text_field :address, style: "width: 200%;" %></td>
+          <td><%= f.text_field :address, class:"rounded-pill", style: "width: 200%;" %></td>
         </tr>
         <tr>
           <th>宛名</th>
-          <td><%= f.text_field :name %></td>
+          <td><%= f.text_field :name, class:"rounded-pill" %></td>
         </tr>
       </table>
 　　　<%= f.submit "新規登録", class:"btn btn-primary btn-md" %>
     <% end %>
 
     <table class="table table-bordered" style="margin-top: 20px;">
-      <thead>
+      <thead class="table-danger">
         <tr>
           <th>郵便番号</th>
           <th>住所</th>
@@ -28,7 +28,7 @@
         </tr>
       </thead>
         <% @addresses.each do |address| %>
-      <tbody>
+      <tbody class="table-light">
         <tr>
           <td>
             <%= address.post_code %>
@@ -45,7 +45,6 @@
                 "data-confirm" => "削除します。よろしいですか？"%>
           </td>
         </tr>
-      </tbody>
         <% end %>
     </table>
  </div>

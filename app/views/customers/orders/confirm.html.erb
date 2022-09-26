@@ -30,7 +30,7 @@
     <table class="table table-bordered">
       <tr>
         <th>送料</th>
-        <td><%= @order.shipping_cost %></td>
+        <td><%= @order.shipping_price %></td>
       </tr>
       <tr>
         <th>商品合計</th>
@@ -38,7 +38,7 @@
       </tr>
       <tr>
         <th>請求金額</th>
-        <td><%= ((@total_price) + (@order.shipping_cost)).to_s(:delimited) %></td>
+        <td><%= ((@total_price) + (@order.shipping_price)).to_s(:delimited) %></td>
       </tr>
     </table>
   </div>
@@ -51,7 +51,7 @@
       </tr>
       <tr>
         <th>お届け先</th>
-        <td>〒<%= @order.postal_code %> <%= @order.address %></br>
+        <td>〒<%= @order.post_code %> <%= @order.address %></br>
             <%= @order.name %>
         </td>
       </tr>
@@ -62,7 +62,7 @@
       <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :name, value: @order.name %>
         <%= f.hidden_field :address, value: @order.address %>
-        <%= f.hidden_field :postal_code, value: @order.postal_code %>
+        <%= f.hidden_field :post_code, value: @order.post_code %>
         <%= f.hidden_field :payment_method, value: @order.payment_method %>
         <%= f.hidden_field :total_payment, value: @total_price + 800 %>
         <%= f.submit "注文を確定する", class: "btn btn-success" %>

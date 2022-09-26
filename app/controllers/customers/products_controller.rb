@@ -1,4 +1,4 @@
-class Customers::ProductsController < ApplicationController
+class Customers::ProductsController < Customers::ApplicationController
 
 def index
   @items = current_customer.items

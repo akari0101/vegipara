@@ -5,17 +5,17 @@
 
   <div class="row mt-3">
     <div class="col-2"><h4><strong>登録情報</strong></h4></div>
-    <div class="col-2"><%= link_to "編集する", customers_edit_path(@customer), class: "btn btn-success" %></div>
+    <div class="col-2"><%= link_to "編集する", customer_edit_path(@customer.id), class: "btn btn-success" %></div>
   </div>
 
   <table class="col-6 table table-bordered mt-3 ml-3">
     <tr>
       <td class="col-3 table-active border-dark">氏名</td>
-      <td class="border-dark"><%= @customer.last_name %> <%= @customer.first_name %></td>
+      <td class="border-dark"><%= @customer.last_name %>　<%= @customer.first_name %></td>
     </tr>
     <tr>
       <td class="col-3 table-active border-dark">カナ</td>
-      <td class="border-dark"><%= @customer.kana_last_name %> <%= @customer.kana_first_name %></td>
+      <td class="border-dark"><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
     </tr>
     <tr>
       <td class="col-3 table-active border-dark">郵便番号</td>
@@ -35,6 +35,10 @@
     </tr>
   </table>
 
+  <div class="row mt-3">
+    <div class="col-2"><h4><strong>ブックマーク一覧</strong></h4></div>
+    <div class="col-2"><%= link_to "一覧を見る", bookmarks_path, class: "btn btn-primary" %></div>
+  </div>
   <div class="row mt-3">
     <div class="col-2"><h4><strong>配送先</strong></h4></div>
     <div class="col-2"><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></div>

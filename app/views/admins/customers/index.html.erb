@@ -12,11 +12,15 @@
         <th class="table-active">ステータス</th>
       </tr>
     </thead>
+
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
           <td><%= customer.id %></td>
-          <td><u><%= link_to customer.full_name, admin_customer_path(customer.id) %></u></td>
+          <td><%= link_to admins_customer_path(customer.id) do %>
+                    <span style="color: black;"><%= customer.last_name + customer.first_name %></span>
+                  <% end %>
+          </td>
           <td><%= customer.email %></td>
           <td>
             <% if customer.is_deleted == false %>

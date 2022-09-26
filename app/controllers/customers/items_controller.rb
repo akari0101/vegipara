@@ -1,4 +1,4 @@
-class Customers::ItemsController < ApplicationController
+class Customers::ItemsController < Customers::ApplicationController
   def index
     @genres = Genre.all
     #タグで絞り込み機能
@@ -7,6 +7,9 @@ class Customers::ItemsController < ApplicationController
     elsif params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       items = @tag.items.order(created_at: :desc)
+    elsif params[:genre_id].present?
+      @genre = Genre.find(params[:genre_id])
+      items = @genre.items
     else
       items = Item.all
     end
@@ -46,6 +49,10 @@ class Customers::ItemsController < ApplicationController
     @genres = Genre.all
     @comment = Comment.new #追加
     #@comments = @output.comments.includes(:user)
+  end
+
+  def edit
+    @item = Item.find(params[:id])
   end
 
   def search

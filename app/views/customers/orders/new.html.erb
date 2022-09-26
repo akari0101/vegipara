@@ -17,9 +17,9 @@
       <%= f.radio_button :address_number, 1 %>
       <%= f.label :address_number_1, "ご自身の住所" %>
       </br>
-      〒<%= current_customer.postal_code %>
+      〒<%= current_customer.post_code %>
       <%= current_customer.address %></br>
-      <%= current_customer.full_name %>
+      <%= current_customer.last_name + current_customer.first_name %>
       </br>
 
       <!-- 配送先 -->
@@ -34,8 +34,8 @@
       <%= f.label :address_number_3, "新しいお届け先" %>
       </br>
       <div class="row">
-        <div class="col-4"><%= f.label :postal_code, "郵便番号（ハイフンなし）" %></div>
-        <div class="col-5"><%= f.text_field :postal_code, class: "form-control" %></div>
+        <div class="col-4"><%= f.label :post_code, "郵便番号（ハイフンなし）" %></div>
+        <div class="col-5"><%= f.text_field :post_code, class: "form-control" %></div>
         <div class="col-4"><%= f.label :address, "住所" %></div>
         <div class="col-8"><%= f.text_field :address, class: "form-control" %></div>
         <div class="col-4"><%= f.label :name, "宛名" %></div>

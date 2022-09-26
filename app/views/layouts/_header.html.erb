@@ -1,8 +1,11 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#bc8f8f;">
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#CCCC66;">
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF6699;">
+    <div class="text-body">
     <div class="container">
       <nav class="navbar-brand navbar-left header-logo">
-        <%#= link_to image_tag("logo1.png", size: "70x50"), root_path, class: "header-button btn text-light" %>
+        <%= link_to image_tag("vegipara.png", size: "80x80"), root_path, class: "header-button btn text-light" %>
       </nav>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,43 +13,52 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="nav navbar-nav ml-auto">
-
           <!-- 顧客がログインしている時 -->
           <% if customer_signed_in? %>
+          <div class="text-center">
             <p>ようこそ、<%= current_customer.last_name %>さん！</p>
-            <li><%= link_to "マイページ", customers_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "商品一覧",  items_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "商品投稿ページ",  new_item_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "出品商品一覧", products_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "ジャンル一覧", genres_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "カート", cart_items_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "header-button btn text-light" %></li>
+          </div>
+            <% if @customer.first_name != "guestcustomer" %>
+              <li class="m-1"><%= link_to "マイページ", customers_path, class: "btn btn-outline-light rounded-pill" %></li>
+            <% end %>
+              <li class="m-1"><%= link_to "商品一覧",  items_path, class: "btn btn-outline-light rounded-pill" %></li>
+            <% if @customer.first_name != "guestcustomer" %>
+              <li class="m-1"><%= link_to "注文履歴一覧", orders_path, class: "btn btn-outline-light rounded-pill" %></li></td>
+              <li class="m-1"><%= link_to "商品投稿ページ",  new_item_path, class: "btn btn-outline-light rounded-pill" %></li></td>
+              <li class="m-1"><%= link_to "出品商品一覧", products_path, class: "btn btn-outline-light rounded-pill" %></li></td>
+              <li class="m-1"><%= link_to "ジャンル一覧", genres_path, class: "btn btn-outline-light rounded-pill" %></li></td>
+              <li class="m-1"><%= link_to "カート", cart_items_path, class: "btn btn-outline-light rounded-pill" %></li></td>
+            <% end %>
+              <li class="m-1"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-light rounded-pill" %></li></td>
 
           <!-- 管理者がログインしている時 -->
           <% elsif admin_signed_in? %>
-            <li><%= link_to "商品一覧", admins_productss_index_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "会員一覧", admins_customers_path, class: "header-button btn text-light" %></li>
-            <%#= link_to "注文履歴一覧", admin_root_path, class: "header-button btn text-light" %>
-            <li><%= link_to "ジャンル一覧", admins_genres_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header-button btn text-light" %></li>
+            <li class="m-1"><%= link_to "商品一覧", admins_items_path, class: "btn btn-outline-light rounded-pill" %></li>
+            <li class="m-1"><%= link_to "会員一覧", admins_customers_path, class: "btn btn-outline-light rounded-pill" %></li>
+            <!--<li><%#= link_to "注文履歴一覧", orders_path, class: "header-button btn text-light" %></li>-->
+            <!--<li><%#= link_to "ジャンル一覧", admins_genres_path, class: "header-button btn text-light" %></li>-->
+            <li class="m-1"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light rounded-pill" %></li>
 
           <!-- ログインしていない時 -->
           <% else %>
-            <li><%= link_to "商品一覧", items_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "新規登録", new_customer_registration_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "ログイン", new_customer_session_path, class: "header-button btn text-light" %></li>
-            <li><%= link_to "管理者ログイン", new_admin_session_path, class: "header-button btn text-light" %></li>
+            <li class="m-1"><%= link_to "商品一覧", items_path, class: "btn btn-outline-light rounded-pill" %></li>
+            <li class="m-1"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-light rounded-pill" %></li>
+            <li class="m-1"><%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-light rounded-pill" %></li>
+            <li class="m-1"><%= link_to 'ゲストログイン', customers_guest_sign_in_path, class: "btn btn-outline-light rounded-pill", method: :post %></li>
+            <li class="m-1"><%= link_to "管理者ログイン", new_admin_session_path, class: "btn btn-outline-light rounded-pill" %></li>
           <% end %>
         </ul>
+          </table>
 
         <!-- 検索機能 -->
         <form class="d-flex" action="/items" method="get">
-          <input name="search" class="ml-2 form-control me-2" type="search" placeholder="文字を入力" aria-label="Search">
-          <button class="btn btn-outline-light ml-2" type="submit">
+          <input name="search" class="ml-2 form-control me-2 rounded-pill" type="search" placeholder="文字を入力" aria-label="Search">
+          <button class="btn btn-outline-light ml-2 rounded-pill" type="submit">
             <i class="fas fa-search"></i>
           </button>
         </form>
       </div>
+    </div>
     </div>
   </nav>
 </header>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mt-4">
+    <h2>ブックマーク一覧</h2>
+  </div>
+  <table class="col-6 table table-bordered mt-3 ml-3">
+  　<thead>
+      <tr>
+        <td class="col-3 table-active border-dark">ブックマークをした人</td>
+        <td class="col-3 table-active border-dark">ブックマークした商品</td>
+        <td class="col-3 table-active border-dark">商品説明</td>
+      </tr>
+  　</thead>
+  　<tbody>
+  　  <% @bookmarks.each do |bookmark| %>
+        <tr>
+          <td class="border-dark"><%= bookmark.item.customer.last_name %>　<%= bookmark.item.customer.first_name %></td>
+          <td class="border-dark">
+            <%= link_to item_path(bookmark.item) do %>
+              <%= bookmark.item.name %>
+            <% end %>
+          </td>
+          <td class="border-dark"><%= bookmark.item.introduction %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

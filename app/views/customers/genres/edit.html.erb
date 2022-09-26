@@ -4,7 +4,7 @@
   </div>
 
   <div class="row mt-3">
-    <%= form_with model: @genre, url: genres_path do |f| %>
+    <%= form_with model: @genre, url: genre_path do |f| %>
       <%= f.label "ジャンル名" %>
       <%= f.text_field :name, class: "ml-5" %>
       <%= f.submit '変更を保存', class: "btn btn-success ml-5" %>

@@ -1,4 +1,4 @@
-class Customers::HomesController < ApplicationController
+class Customers::HomesController < Customers::ApplicationController
   def top
     #Item=モデル名
     @genres = Genre.all

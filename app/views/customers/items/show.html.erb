@@ -3,43 +3,54 @@
     <div class="col-sm-3">
       <%= render 'customers/genres/index', genres: @genres %>
     </div>
-    <div class="col-sm-4">
-      <%= image_tag @item.image, size: '300x300' %>
-    </div>
-    <div class="col-sm-4 offset-1">
-      <h3><%=@item.name%></h3>
-      <p class="my-3"><%=@item.introduction%></p>
-      <strong><p class="mt-5">￥<%= @item.with_tax_price %>(税込)</p></strong>
-      <%=form_with model: @cart_item, url: cart_items_path,method: :post do |f| %>
-        <%= f.hidden_field :item_id,:value => @item.id %>
-        <%= f.hidden_field :customer, :value => current_customer %>
-        <%= f.select :quantity, *[1..10], prompt:"個数選択" %>
-        <%=f.submit"カートに入れる", class: "btn btn-success ml-5"%>
-      <%end%>
-    </div>
-
-    
-    <!--イイネ機能-->
-    <% if @item.favorited_by?(current_customer) %>
-      <p>
-        <%= link_to item_favorites_path(@item), method: :delete do %>
-          ♥<%= @item.favorites.count %> いいね
+      <div class="col-sm-4">
+        <%= image_tag @item.image, size: '300x300' %>
+      </div>
+        <div class="col-sm-4 offset-1">
+          <h3><%=@item.name%></h3>
+          <p class="my-3"><%=@item.introduction%></p>
+          <strong><p class="mt-5">￥<%= @item.with_tax_price %>(税込)</p></strong>
+          <%=form_with model: @cart_item, url: cart_items_path,method: :post do |f| %>
+            <%= f.hidden_field :item_id,:value => @item.id %>
+            <%= f.hidden_field :customer, :value => current_customer %>
+            <%= f.select :amount, *[1..10], prompt:"個数選択" %>
+            <%=f.submit"カートに入れる", class: "btn btn-success ml-5"%>
+          <%end%>
+        </div>
+        <!--イイネ機能-->
+        <% if @item.favorited_by?(current_customer) %>
+          <p>
+            <%= link_to item_favorites_path(@item), method: :delete do %>
+              ♥<%= @item.favorites.count %> いいね
+            <% end %>
+          </p>
+          <% else %>
+          <p>
+            <%= link_to item_favorites_path(@item), method: :post do %>
+              ♡<%= @item.favorites.count %> いいね
+            <% end %>
+          </p>
         <% end %>
-      </p>
-      <% else %>
-      <p>
-        <%= link_to item_favorites_path(@item), method: :post do %>
-          ♡<%= @item.favorites.count %> いいね
-        <% end %>
-      </p>
-    <% end %>
-    <!--コメントフォーム-->
-    <div class="new-comment">
-      <%= render 'customers/comments/form', item: @item, comment: @comment %>
-    </div>
-    <!--コメント一覧部分-->
-    <div class="comments_area">
-      <%= render 'customers/comments/post_comments', item: @item %>
-    </div>
+        <!--ブックマーク機能-->
+        <tr>
+          <td>
+          <% if @item.bookmarked_by?(current_customer) %>
+            <td><%= link_to "ブックマークを外す", item_bookmarks_path(@item), method: :delete %></td>
+          <% else %>
+            <td><%= link_to "ブックマークを付ける", item_bookmarks_path(@item), method: :post %></td>
+          <% end %>
+          </td>
+        </tr>
+        <!--コメントフォーム-->
+        <div class="new-comment">
+          <%= render 'customers/comments/form', item: @item, comment: @comment %>
+        </div>
+        <!--コメント一覧部分-->
+        <div class="comments_area">
+          <%= render 'customers/comments/post_comments', item: @item %>
+        </div>
   </div>
 </div>
+
+
+

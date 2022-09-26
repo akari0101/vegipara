@@ -14,7 +14,7 @@
         <tr>
           <th class="col-1 table-active border-dark">配送先</th>
           <td class="col-3 border-dark">
-            <%= @order.postal_code %><br>
+            <%= @order.post_code %><br>
             <%= @order.address %><br>
             <%= @order.name %>
           </td>
@@ -25,10 +25,10 @@
             <%= @order.payment_method_i18n %> <!-- _i18nでenumを日本語化 -->
           </td>
         </tr>
-        <tr>
-          <th class="col-1 table-active border-dark">ステータス</th>
-          <td class="col-3 border-dark"><%= @order.status_i18n %></td> <!-- _i18nでenumを日本語化 -->
-        </tr>
+        <!--<tr>-->
+          <!--<th class="col-1 table-active border-dark">ステータス</th>-->
+          <!--<td class="col-3 border-dark"><%#= @order.status %></td> <!-- _i18nでenumを日本語化 -->
+        <!--</tr>-->
       </table>
     </div>
 

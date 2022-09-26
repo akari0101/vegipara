@@ -1,4 +1,4 @@
-class Customers::GenresController < ApplicationController
+class Customers::GenresController < Customers::ApplicationController
 
   def index
     @genres = Genre.all

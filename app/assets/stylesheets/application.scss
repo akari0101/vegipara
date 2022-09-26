@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+#customer {
+  &.bg-body {
+    background-color: #ff6699;
+  }
+}
+

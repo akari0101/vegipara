@@ -1,4 +1,4 @@
-class Customers::AddressesController < ApplicationController
+class Customers::AddressesController < Customers::ApplicationController
   #配送先一覧
   def index
     @customer = current_customer
@@ -54,7 +54,7 @@ class Customers::AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:name, :postal_code, :address, :customer_id)
+    params.require(:address).permit(:name, :post_code, :address, :customer_id)
   end
 
   #退会済みユーザーへの対応

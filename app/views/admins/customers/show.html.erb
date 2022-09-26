@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-4">
-    <h2><%= @customer.full_name %>さんの会員詳細</h2>
+    <h2><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
   </div>
 
   <div class="row mt-3">
@@ -13,11 +13,11 @@
   </div>
   <div class="row mt-2">
     <div class="col-2">フリガナ</div>
-    <div class="col-3"><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></div>
+    <div class="col-3"><%= @customer.kana_last_name %> <%= @customer.kana_first_name %></div>
   </div>
   <div class="row mt-2">
     <div class="col-2">郵便番号</div>
-    <div class="col-3"><%= @customer.postal_code %></div>
+    <div class="col-3"><%= @customer.post_code %></div>
   </div>
   <div class="row mt-2">
     <div class="col-2">住所</div>
@@ -25,7 +25,7 @@
   </div>
   <div class="row mt-2">
     <div class="col-2">電話番号</div>
-    <div class="col-3"><%= @customer.telephone_number %></div>
+    <div class="col-3"><%= @customer.phone_number %></div>
   </div>
   <div class="row mt-2">
     <div class="col-2">メールアドレス</div>
@@ -43,8 +43,8 @@
   </div>
 
   <div class="row">
-    <div class="col-3"><%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %></div>
-    <div class="col-3"><%= link_to "注文履歴一覧を見る", admin_order_path, class: "btn btn-primary" %></div>
+    <div class="col-3"><%= link_to "編集する", edit_admins_customer_path, class: "btn btn-success" %></div>
+    <!--<div class="col-3"><%#= link_to "注文履歴一覧を見る", admins_path, class: "btn btn-primary" %></div>-->
   </div>
 
 </div>

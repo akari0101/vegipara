@@ -1,4 +1,4 @@
-class Customers::CommentsController < ApplicationController
+class Customers::CommentsController < Customers::ApplicationController
   before_action :authenticate_customer!
 
   def create
