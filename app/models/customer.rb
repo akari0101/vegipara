@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   def self.guest
-    find_or_create_by!(first_name: 'guestcustomer' ,email: 'guest@example.com') do |customer|
+    find_or_create_by!(first_name: 'guestcustomer', email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
       customer.first_name = "guestcustomer"
       customer.last_name = "guest"

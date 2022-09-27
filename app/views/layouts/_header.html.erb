@@ -18,16 +18,16 @@
           <div class="text-center">
             <p>ようこそ、<%= current_customer.last_name %>さん！</p>
           </div>
-            <% if @customer.first_name != "guestcustomer" %>
-              <li class="m-1"><%= link_to "マイページ", customers_path, class: "btn btn-outline-light rounded-pill" %></li>
+            <% if current_customer.email != "guest@example.com" %>
             <% end %>
               <li class="m-1"><%= link_to "商品一覧",  items_path, class: "btn btn-outline-light rounded-pill" %></li>
-            <% if @customer.first_name != "guestcustomer" %>
+            <% if current_customer.email != "guest@example.com" %>
               <li class="m-1"><%= link_to "注文履歴一覧", orders_path, class: "btn btn-outline-light rounded-pill" %></li></td>
               <li class="m-1"><%= link_to "商品投稿ページ",  new_item_path, class: "btn btn-outline-light rounded-pill" %></li></td>
               <li class="m-1"><%= link_to "出品商品一覧", products_path, class: "btn btn-outline-light rounded-pill" %></li></td>
               <li class="m-1"><%= link_to "ジャンル一覧", genres_path, class: "btn btn-outline-light rounded-pill" %></li></td>
               <li class="m-1"><%= link_to "カート", cart_items_path, class: "btn btn-outline-light rounded-pill" %></li></td>
+              <li class="m-1"><%= link_to "マイページ", mypage_path, class: "btn btn-outline-light rounded-pill" %></li>
             <% end %>
               <li class="m-1"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-light rounded-pill" %></li></td>
 

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-
+  
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
   end
+  
+  # devise_for :customers , controllers: {
+  #   registrations: "customers/registrations",
+  #   sessions: "customers/sessions"
+  # }
   
   devise_for :admins, skip: [:registrations, :passwords] , controllers: {
     sessions: 'admins/sessions'
@@ -23,12 +28,12 @@ Rails.application.routes.draw do
   get 'items/search/:id' => 'items#search'
   delete '/cart_items/destroy_all' => 'customers/cart_items#destroy_all'
 
-  get '/customers' => 'customers/customers#show'
+  get '/customers/mypage' => 'customers/customers#show', as: :mypage
   get '/customers/:id/edit' => 'customers/customers#edit', as: :customer_edit
-  patch '/customers' => 'customers/customers#update'
+  patch '/customers/update' => 'customers/customers#update', as: :customer_update
   get '/customers/unsubscribe' => 'customers/customers#unsubscribe'
   patch '/customers/withdraw' => 'customers/customers#withdraw'
-  resources :customers, only: [:index, :show, :edit, :update]
+  # resources :customers, only: [:index, :show]
 
 
   namespace :admins do

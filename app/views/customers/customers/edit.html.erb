@@ -3,7 +3,7 @@
     <h2>会員情報編集</h2>
   </div>
 
-  <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+  <%= form_with model: @customer, url: customer_update_path, local: true do |f| %>
     <div class="row mt-3 ml-3">
       <div class="col-2"><%= f.label "氏名" %></div>
       <div class="col-3"><%= f.text_field :last_name %></div>

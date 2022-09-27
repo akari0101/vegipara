@@ -1,18 +1,28 @@
 class Customers::CustomersController < Customers::ApplicationController
-  before_action :ensure_guest_user, only: [:edit]
+  # before_action :ensure_guest_user, only: [:edit]
 
   def show
     @customer = current_customer
   end
 
   def edit
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
+    # @customer = current_customer
+    if @customer.email == 'guest@example.com'
+    redirect_to root_path
+    return
+    end
+    if @customer == current_customer
+    render :edit
+    else
+    redirect_to mypage_path(current_customer)
+    end
   end
 
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customer_path
+      redirect_to mypage_path(current_customer)
     else
       render :edit
     end
@@ -38,8 +48,8 @@ class Customers::CustomersController < Customers::ApplicationController
   def ensure_guest_user
     @customer = Customer.find(params[:id])
     if @customer.first_name == "guestcustomer"
-      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to customer_path(current_customer), notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
-  end  
-  
+  end
+
 end
