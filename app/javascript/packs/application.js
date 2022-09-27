@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+// window.$ = window.jQuery = import("jquery")
 import 'bootstrap';
 import '../stylesheets/application';
 import '@fortawesome/fontawesome-free/js/all'
@@ -17,3 +18,4 @@ ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
+// import 'packs/raty'
