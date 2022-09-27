@@ -18,8 +18,6 @@
           <div class="text-center">
             <p>ようこそ、<%= current_customer.last_name %>さん！</p>
           </div>
-            <% if current_customer.email != "guest@example.com" %>
-            <% end %>
               <li class="m-1"><%= link_to "商品一覧",  items_path, class: "btn btn-outline-light rounded-pill" %></li>
             <% if current_customer.email != "guest@example.com" %>
               <li class="m-1"><%= link_to "注文履歴一覧", orders_path, class: "btn btn-outline-light rounded-pill" %></li></td>
