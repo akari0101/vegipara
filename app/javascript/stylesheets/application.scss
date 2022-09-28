@@ -1,2 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+#customer {
+  &.bg-body {
+    background-color: #ff6699;
+  }
+}
