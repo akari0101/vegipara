@@ -11,7 +11,7 @@ class Customers::CommentsController < Customers::ApplicationController
       flash.now[:notice] = 'コメントを投稿しました'
       redirect_to item_path(@item)
     else
-      render :show
+      redirect_to request.referer
     end
   end
 
