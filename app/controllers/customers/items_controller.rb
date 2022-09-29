@@ -23,8 +23,6 @@ class Customers::ItemsController < Customers::ApplicationController
     elsif params[:star_count]
       @items = @items.star_count
     end
-
-    pp "hoge",@items
   end
 
   def new
